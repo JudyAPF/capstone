@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "244693853515",
+    "project_id": "ibenture-3a745",
+    "storage_bucket": "ibenture-3a745.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244693853515:android:caac04e1f33293abb474ce",
+        "android_client_info": {
+          "package_name": "com.example.ibenture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlcXPT5yomrB4dESWipgLvrwCGK960_Tk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
