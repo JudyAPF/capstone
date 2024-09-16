@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:ibenture/screens/educational_modules/module1/IdeationScreen.dart';
 import 'package:ibenture/screens/educational_modules/module2/BusinessPlanScreen.dart';
@@ -12,7 +14,7 @@ class ModuleHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Educational Modules'),
+        title: const Text('Educational Modules'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -39,7 +41,7 @@ class ModuleHomeScreen extends StatelessWidget {
                     Icons.lightbulb_outline,
                     Colors.orange,
                   ),
-                  SizedBox(height: 10), 
+                  const SizedBox(height: 10), 
                   _buildModuleCard(
                     context,
                     'Module 2: Business Plan Development',
@@ -47,27 +49,27 @@ class ModuleHomeScreen extends StatelessWidget {
                     Icons.business, 
                     Colors.blue, 
                   ),
-                  SizedBox(height: 10), 
+                  const SizedBox(height: 10), 
                   _buildModuleCard(
                     context,
                     'Module 3: Branding and Naming',
-                    BrandingNamingScreen(), 
+                    const BrandingNamingScreen(), 
                     Icons.branding_watermark,
                     Colors.red, 
                   ),
-                  SizedBox(height: 10), 
+                  const SizedBox(height: 10), 
                   _buildModuleCard(
                     context,
                     'Module 4: Selecting Location',
-                    SelectingLocationScreen(), 
+                    const SelectingLocationScreen(), 
                     Icons.location_on, 
                     Colors.green, 
                   ),
-                  SizedBox(height: 10), 
+                  const SizedBox(height: 10), 
                   _buildModuleCard(
                     context,
                     'Module 5: Registration and Licensing',
-                    RegistrationLicensingScreen(), 
+                    const RegistrationLicensingScreen(), 
                     Icons.assignment, 
                     Colors.purple,
                   ),
@@ -116,7 +118,7 @@ class ModuleHomeScreen extends StatelessWidget {
                   ),
                   child: Icon(icon, color: iconColor, size: 30),
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

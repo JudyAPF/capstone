@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:ibenture/models/mod1les1.dart';
 import 'package:ibenture/screens/educational_modules/module1/lesson1Quiz.dart';
@@ -26,7 +28,7 @@ class Lesson1Screen extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     color: Colors.blueAccent, 
                     borderRadius: BorderRadius.circular(10), 
@@ -37,9 +39,9 @@ class Lesson1Screen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.all(16.0), 
+                padding: const EdgeInsets.all(16.0), 
                 decoration: BoxDecoration(
                   color: Colors.white, 
                   borderRadius: BorderRadius.circular(8.0),
@@ -47,13 +49,13 @@ class Lesson1Screen extends StatelessWidget {
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1), 
                       blurRadius: 5, 
-                      offset: Offset(0, 2), 
+                      offset: const Offset(0, 2), 
                     ),
                   ],
                 ),
                 child: _buildContentText(lesson.content),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -66,17 +68,17 @@ class Lesson1Screen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('Take Quiz',
+                  child: const Text('Take Quiz',
                   style: TextStyle(
                     color: Colors.white
                   ),),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     backgroundColor: Colors.blueAccent, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8), 
                     ),
-                    textStyle: TextStyle(fontSize: 16,
+                    textStyle: const TextStyle(fontSize: 16,
                    ), 
                   ),
                 ),
@@ -104,7 +106,7 @@ class Lesson1Screen extends StatelessWidget {
           spans.add(TextSpan(text: parts[i]));
         }
       }
-      spans.add(TextSpan(text: '\n'));
+      spans.add(const TextSpan(text: '\n'));
     }
 
     return RichText(

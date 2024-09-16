@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_build_context_synchronously, avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +9,10 @@ import 'package:ibenture/screens/educational_modules/moduleHome.dart';
 class ExamScreen extends StatefulWidget {
   final List<ExamQuestions> examQuestions;
 
-  const ExamScreen({required this.examQuestions, Key? key}) : super(key: key);
+  const ExamScreen({required this.examQuestions, super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ExamScreenState createState() => _ExamScreenState();
 }
 
@@ -23,9 +26,9 @@ class _ExamScreenState extends State<ExamScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text('Lesson 1 Quiz'),
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text('Lesson 1 Quiz'),
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 24),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -45,14 +48,14 @@ class _ExamScreenState extends State<ExamScreen> {
           onPressed: _score == null ? _submitExam : _closeExam,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blueAccent,
-            padding: EdgeInsets.symmetric(vertical: 15),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           child: Text(
             _score == null ? 'Submit' : 'Close',
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
@@ -61,7 +64,7 @@ class _ExamScreenState extends State<ExamScreen> {
 
   Widget _buildQuestionCard(int index, ExamQuestions question) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -79,18 +82,18 @@ class _ExamScreenState extends State<ExamScreen> {
                 color: Colors.blue.shade700,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               question.examquestion ?? '',
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Column(
               children: question.examoptions!.map((option) {
                 final isSelected = _answers[index] == option;
                 final isCorrect = question.examanswer == option;
                 return Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
@@ -143,7 +146,7 @@ class _ExamScreenState extends State<ExamScreen> {
         final correctAnswer = question.examanswer;
 
         return Card(
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -155,13 +158,13 @@ class _ExamScreenState extends State<ExamScreen> {
               children: [
                 Text(
                   question.examquestion ?? '',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black, // Changed to black
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 // Null check for examoptions
                 if (question.examoptions != null)
                   Column(
@@ -169,7 +172,7 @@ class _ExamScreenState extends State<ExamScreen> {
                       final isSelected = userAnswer == option;
                       final isCorrect = correctAnswer == option;
                       return Container(
-                        margin: EdgeInsets.only(bottom: 10),
+                        margin: const EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           border: Border.all(
@@ -214,14 +217,14 @@ class _ExamScreenState extends State<ExamScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Error'),
-            content: Text('Please answer all questions before submitting.'),
+            title: const Text('Error'),
+            content: const Text('Please answer all questions before submitting.'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -250,7 +253,7 @@ class _ExamScreenState extends State<ExamScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Exam Result'),
+          title: const Text('Exam Result'),
           content: Text(
               'Your score is $_score out of ${widget.examQuestions.length}'),
           actions: [
@@ -261,17 +264,17 @@ class _ExamScreenState extends State<ExamScreen> {
                   _showAnswers = true;
                 });
               },
-              child: Text('View Answers'),
+              child: const Text('View Answers'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ModuleHomeScreen()),
+                  MaterialPageRoute(builder: (context) => const ModuleHomeScreen()),
                 );
               },
-              child: Text('Close'),
+              child: const Text('Close'),
             ),
           ],
         );
@@ -328,7 +331,7 @@ class _ExamScreenState extends State<ExamScreen> {
     Navigator.pop(context);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ModuleHomeScreen()),
+      MaterialPageRoute(builder: (context) => const ModuleHomeScreen()),
     );
   }
 }

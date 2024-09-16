@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +15,7 @@ class SelectingLocationScreen extends StatefulWidget {
   const SelectingLocationScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SelectingLocationScreenState createState() =>
       _SelectingLocationScreenState();
 }
@@ -35,6 +38,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
       User? currentUser = FirebaseAuth.instance.currentUser;
 
       if (currentUser == null) {
+        // ignore: avoid_print
         print("No user is currently signed in!");
         return;
       }
@@ -67,6 +71,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
           'ExamScore': 0,
         });
 
+        // ignore: avoid_print
         print("Created new document for UID $uid with default values.");
         progressSnapshot = await progressDocRef.get();
       }
@@ -86,7 +91,6 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
       bool lesson5Complete = progressSnapshot['5Complete'] ?? false;
       int lesson5Score = progressSnapshot['5Score'] ?? 0;
       bool examStart = progressSnapshot['ExamStart'] ?? false;
-      bool examComplete = progressSnapshot['ExamComplete'] ?? false;
 
       if (lesson1Complete && lesson1Score >= 8 && !lesson2Start) {
         await progressDocRef.update({'2Start': true});
@@ -121,8 +125,10 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
         examStarted = examStart;
       });
 
+      // ignore: avoid_print
       print("Progress data fetched and UI updated.");
     } catch (e) {
+      // ignore: avoid_print
       print("Error fetching progress: $e");
     }
   }
@@ -131,7 +137,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Module: Selecting a Business Location'),
+        title: const Text('Module: Selecting a Business Location'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -149,7 +155,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: const Icon(
                     Icons.location_on,
                     size: 100,
@@ -180,35 +186,35 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson1Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson1Screen()),
                 );
               }, true),
               _buildLessonButton(context, 'Lesson 2: Analyzing Foot Traffic',
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson2Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson2Screen()),
                 );
               }, lesson2Unlocked),
               _buildLessonButton(context, 'Lesson 3: Proximity to Competitors',
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson3Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson3Screen()),
                 );
               }, lesson3Unlocked),
               _buildLessonButton(context, 'Lesson 4: Accessibility and Parking',
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson4Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson4Screen()),
                 );
               }, lesson4Unlocked),
               _buildLessonButton(
                   context, 'Lesson 5: Leasing vs Buying Property', () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson5Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson5Screen()),
                 );
               }, lesson5Unlocked),
               const SizedBox(height: 20),
@@ -231,8 +237,8 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
                     backgroundColor: examStarted
                         ? Colors.purple
                         : Colors.grey, // Purple when unlocked, grey when locked
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    textStyle: TextStyle(
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    textStyle: const TextStyle(
                       fontSize: 18,
                     ),
                   ),
@@ -265,7 +271,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
             color: isUnlocked ? Colors.purple : Colors.grey,
             width: 0.5,
           ),
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               vertical: 20, horizontal: 30), // Adjusted padding
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
@@ -284,7 +290,7 @@ class _SelectingLocationScreenState extends State<SelectingLocationScreen> {
               ),
             ),
             if (!isUnlocked)
-              Icon(
+              const Icon(
                 Icons.lock,
                 color: Colors.grey,
               ),

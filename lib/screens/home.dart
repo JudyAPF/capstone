@@ -7,9 +7,9 @@ import 'package:getwidget/components/drawer/gf_drawer_header.dart';
 import 'package:getwidget/components/image/gf_image_overlay.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ibenture/screens/ask_ibenture_feature/ask_ibenture.dart';
+import 'package:ibenture/screens/assessment/home.dart';
 import 'package:ibenture/screens/educational_modules/moduleHome.dart';
 import 'package:ibenture/screens/permits_and_licenses_feature/business_permits_and_licenses.dart';
-import 'package:ibenture/screens/business_plan_maker_feature/business_plan_maker.dart';
 import 'package:ibenture/screens/login.dart';
 import 'package:ibenture/screens/business_model_canvas/business_model_canvas_editor.dart';
 
@@ -105,7 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const BusinessPlanMakerScreen(),
+                          builder: (context) =>
+                              const IntroductionScreen(),
                         ),
                       );
                     },
@@ -254,10 +255,11 @@ class _HomeScreenState extends State<HomeScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const BusinessPlanMakerScreen(),
-                    ),
-                  );
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const IntroductionScreen(),
+                        ),
+                      );
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10.0, right: 10.0),

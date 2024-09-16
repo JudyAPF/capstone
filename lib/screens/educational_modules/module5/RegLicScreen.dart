@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, file_names
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +15,7 @@ class RegistrationLicensingScreen extends StatefulWidget {
   const RegistrationLicensingScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegistrationLicensingScreenState createState() =>
       _RegistrationLicensingScreenState();
 }
@@ -36,6 +39,7 @@ class _RegistrationLicensingScreenState
       User? currentUser = FirebaseAuth.instance.currentUser;
 
       if (currentUser == null) {
+        // ignore: avoid_print
         print("No user is currently signed in!");
         return;
       }
@@ -68,6 +72,7 @@ class _RegistrationLicensingScreenState
           'ExamScore': 0,
         });
 
+        // ignore: avoid_print
         print("Created new document for UID $uid with default values.");
         progressSnapshot = await progressDocRef.get();
       }
@@ -122,8 +127,10 @@ class _RegistrationLicensingScreenState
         examStarted = examStart;
       });
 
+      // ignore: avoid_print
       print("Progress data fetched and UI updated.");
     } catch (e) {
+      // ignore: avoid_print
       print("Error fetching progress: $e");
     }
   }
@@ -132,7 +139,7 @@ class _RegistrationLicensingScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Module 5: Registration and Licensing'),
+        title: const Text('Module 5: Registration and Licensing'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -150,7 +157,7 @@ class _RegistrationLicensingScreenState
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: const Icon(
                     Icons.build,
                     size: 100,
@@ -182,7 +189,7 @@ class _RegistrationLicensingScreenState
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson1Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson1Screen()),
                 );
               }, true),
               _buildLessonButton(
@@ -190,14 +197,14 @@ class _RegistrationLicensingScreenState
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson2Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson2Screen()),
                 );
               }, lesson2Unlocked),
               _buildLessonButton(context,
                   'Lesson 3: Applying for Necessary Licenses and Permits', () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson3Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson3Screen()),
                 );
               }, lesson3Unlocked),
               _buildLessonButton(context,
@@ -205,14 +212,14 @@ class _RegistrationLicensingScreenState
                   () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson4Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson4Screen()),
                 );
               }, lesson4Unlocked),
               _buildLessonButton(
                   context, 'Lesson 5: Maintaining Business Compliance', () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Lesson5Screen()),
+                  MaterialPageRoute(builder: (context) => const Lesson5Screen()),
                 );
               }, lesson5Unlocked),
               const SizedBox(height: 20),
@@ -235,8 +242,8 @@ class _RegistrationLicensingScreenState
                     backgroundColor: examStarted
                         ? Colors.purple
                         : Colors.grey, // Purple when unlocked, grey when locked
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    textStyle: TextStyle(
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    textStyle: const TextStyle(
                       fontSize: 18,
                     ),
                   ),
@@ -269,7 +276,7 @@ class _RegistrationLicensingScreenState
             color: isUnlocked ? Colors.purple : Colors.grey,
             width: 0.5,
           ),
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               vertical: 20, horizontal: 30), // Adjusted padding
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
@@ -288,7 +295,7 @@ class _RegistrationLicensingScreenState
               ),
             ),
             if (!isUnlocked)
-              Icon(
+              const Icon(
                 Icons.lock,
                 color: Colors.grey,
               ),

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +15,7 @@ class BusinessPlanScreen extends StatefulWidget {
   const BusinessPlanScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BusinessPlanScreenState createState() => _BusinessPlanScreenState();
 }
 
@@ -34,6 +37,7 @@ class _BusinessPlanScreenState extends State<BusinessPlanScreen> {
       User? currentUser = FirebaseAuth.instance.currentUser;
 
       if (currentUser == null) {
+        // ignore: avoid_print
         print("No user is currently signed in!");
         return;
       }
@@ -66,6 +70,7 @@ class _BusinessPlanScreenState extends State<BusinessPlanScreen> {
           'ExamScore': 0,
         });
 
+        // ignore: avoid_print
         print("Created new document for UID $uid with default values.");
         progressSnapshot = await progressDocRef.get();
       }
@@ -85,7 +90,6 @@ class _BusinessPlanScreenState extends State<BusinessPlanScreen> {
       bool lesson5Complete = progressSnapshot['5Complete'] ?? false;
       int lesson5Score = progressSnapshot['5Score'] ?? 0;
       bool examStart = progressSnapshot['ExamStart'] ?? false;
-      bool examComplete = progressSnapshot['ExamComplete'] ?? false;
 
       if (lesson1Complete && lesson1Score >= 8 && !lesson2Start) {
         await progressDocRef.update({'2Start': true});
@@ -120,8 +124,10 @@ class _BusinessPlanScreenState extends State<BusinessPlanScreen> {
         examStarted = examStart;
       });
 
+      // ignore: avoid_print
       print("Progress data fetched and UI updated.");
     } catch (e) {
+      // ignore: avoid_print
       print("Error fetching progress: $e");
     }
   }
@@ -130,7 +136,7 @@ class _BusinessPlanScreenState extends State<BusinessPlanScreen> {
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: Text('Module 2: Business Plan Development'),
+      title: const Text('Module 2: Business Plan Development'),
     ),
     body: SingleChildScrollView(
       child: Padding(
@@ -148,7 +154,7 @@ Widget build(BuildContext context) {
                     end: Alignment.bottomRight,
                   ),
                 ),
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: const Icon(
                   Icons.lightbulb_outline,
                   size: 100,
@@ -179,35 +185,35 @@ Widget build(BuildContext context) {
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lesson1Screen()),
+                MaterialPageRoute(builder: (context) => const Lesson1Screen()),
               );
             }, true),
             _buildLessonButton(context, 'Lesson 2: Market Research and Analysis',
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lesson2Screen()),
+                MaterialPageRoute(builder: (context) => const Lesson2Screen()),
               );
             }, lesson2Unlocked),
             _buildLessonButton(context, 'Lesson 3: Financial Planning',
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lesson3Screen()),
+                MaterialPageRoute(builder: (context) => const Lesson3Screen()),
               );
             }, lesson3Unlocked),
             _buildLessonButton(context, 'Lesson 4: Business Operations Plan',
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lesson4Screen()),
+                MaterialPageRoute(builder: (context) => const Lesson4Screen()),
               );
             }, lesson4Unlocked),
             _buildLessonButton(context, 'Lesson 5: Writing Your Business Plan',
                 () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lesson5Screen()),
+                MaterialPageRoute(builder: (context) => const Lesson5Screen()),
               );
             }, lesson5Unlocked),
             const SizedBox(height: 20),
@@ -230,8 +236,8 @@ Widget build(BuildContext context) {
                   backgroundColor: examStarted
                       ? Colors.purple
                       : Colors.grey, // Purple when unlocked, grey when locked
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  textStyle: TextStyle(
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  textStyle: const TextStyle(
                     fontSize: 18,
                   ),
                 ),
@@ -265,7 +271,7 @@ Widget _buildLessonButton(BuildContext context, String lessonTitle,
               : Colors.grey,
           width: 0.5,
         ),
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30), // Adjusted padding
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30), // Adjusted padding
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -282,7 +288,7 @@ Widget _buildLessonButton(BuildContext context, String lessonTitle,
             ),
           ),
           if (!isUnlocked)
-            Icon(
+            const Icon(
               Icons.lock,
               color: Colors.grey,
             ),

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:ibenture/models/lesson_model.dart';
 
 List<ExamQuestions> examQuestions = [

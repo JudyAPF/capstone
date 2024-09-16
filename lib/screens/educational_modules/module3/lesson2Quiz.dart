@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, library_private_types_in_public_api, avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,9 @@ class _QuizScreenState extends State<QuizScreen2> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text('Lesson 2 Quiz'),
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text('Lesson 2 Quiz'),
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 24),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -48,7 +50,7 @@ class _QuizScreenState extends State<QuizScreen2> {
           ),
           child: Text(
             _score == null ? 'Submit' : 'Close',
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
@@ -57,7 +59,7 @@ class _QuizScreenState extends State<QuizScreen2> {
 
   Widget _buildQuestionCard(int index, QuizQuestion question) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -75,18 +77,18 @@ class _QuizScreenState extends State<QuizScreen2> {
                 color: Colors.blue.shade700,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               question.question,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Column(
               children: question.options!.map((option) {
                 final isSelected = _answers[index] == option;
                 final isCorrect = question.answer == option;
                 return Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
@@ -140,7 +142,7 @@ class _QuizScreenState extends State<QuizScreen2> {
         final correctAnswer = question.answer;
 
         return Card(
-          margin: EdgeInsets.symmetric(vertical: 10),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -152,19 +154,19 @@ class _QuizScreenState extends State<QuizScreen2> {
               children: [
                 Text(
                   question.question,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black, // Changed to black
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Column(
                   children: question.options!.map((option) {
                     final isSelected = userAnswer == option;
                     final isCorrect = correctAnswer == option;
                     return Container(
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(
@@ -207,7 +209,7 @@ class _QuizScreenState extends State<QuizScreen2> {
     Navigator.pop(context);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ModuleHomeScreen()),
+      MaterialPageRoute(builder: (context) => const ModuleHomeScreen()),
     );
   }
 
@@ -221,7 +223,7 @@ class _QuizScreenState extends State<QuizScreen2> {
               borderRadius: BorderRadius.circular(15),
             ),
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Incomplete Submission',
               style: TextStyle(
                 fontSize: 20,
@@ -229,8 +231,8 @@ class _QuizScreenState extends State<QuizScreen2> {
                 color: Colors.blueAccent,
               ),
             ),
-            content: Padding(
-              padding: const EdgeInsets.only(top: 10),
+            content: const Padding(
+              padding: EdgeInsets.only(top: 10),
               child: Text(
                 'Please ensure all questions are answered before submitting.',
                 style: TextStyle(
@@ -244,7 +246,7 @@ class _QuizScreenState extends State<QuizScreen2> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   'Got it',
                   style: TextStyle(
                     fontSize: 16,
@@ -326,7 +328,7 @@ class _QuizScreenState extends State<QuizScreen2> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ModuleHomeScreen()),
+                  MaterialPageRoute(builder: (context) => const ModuleHomeScreen()),
                 );
               },
               style: TextButton.styleFrom(
@@ -416,7 +418,7 @@ class _QuizScreenState extends State<QuizScreen2> {
         await progressDocRef.update(updates);
         print("Document updated with: $updates");
 
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 1));
         DocumentSnapshot refreshedSnapshot = await progressDocRef.get();
         print("Refreshed Document Data: ${refreshedSnapshot.data()}");
       } catch (e) {

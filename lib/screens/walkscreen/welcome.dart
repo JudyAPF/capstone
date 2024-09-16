@@ -30,6 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     if (FirebaseAuth.instance.currentUser != null) {
       // Schedule navigation to HomeScreen after build phase is complete
       Future.delayed(Duration.zero, () {
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const HomeScreen(),
@@ -59,7 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ],
             ),
             Container(
-              alignment:  const Alignment(0, 0.75),
+              alignment: const Alignment(0, 0.75),
               child: SmoothPageIndicator(
                 controller: welcomeProvider.controller,
                 count: 5,
@@ -85,9 +86,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Text(
                   'Skip',
                   style: GoogleFonts.kanit(
-                  fontSize: 16.sp,
-                  color: Colors.black,
-                ),
+                    fontSize: 16.sp,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),

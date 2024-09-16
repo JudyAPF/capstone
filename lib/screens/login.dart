@@ -70,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (FirebaseAuth.instance.currentUser != null) {
       // Schedule navigation to HomeScreen after build phase is complete
       Future.delayed(Duration.zero, () {
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const HomeScreen(),
